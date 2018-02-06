@@ -1,0 +1,57 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-resturants-list',
+  templateUrl: './resturants-list.component.html',
+  styleUrls: ['./resturants-list.component.css']
+})
+export class ResturantsListComponent implements OnInit {
+
+ pageTitle:string="Restaurant Management System";
+  constructor() { }
+  showImage:boolean=false;
+  imageWidth=50;
+  col=4;
+  listFilter='mogli';
+  resturants:any[]=[{
+        "restaurantId": 1,
+        "restaurantTitle": "Mogli",
+        "restaurantCity": "Delhi",
+        "restaurantState": "Delhi",
+        "starRating": 3.5,
+        "imageUrl":"https://s-media-cache-ak0.pinimg.com/originals/03/4f/75/034f75c06a06de6635af8f24b5808096.png",
+        "imageTitle":"hi"
+    },
+    {
+        "restaurantId": 2,
+        "restaurantTitle": "Haldiram",
+        "restaurantCity": "Nagpur",
+        "restaurantState": "Maharashtra",
+        "starRating":2.5,
+        "imageUrl": "http://www.indiagiftcenter.com/haldiramlogo.gif",
+        "imageTitle":"hi"
+    },
+     {
+        "restaurantId": 3,
+        "restaurantTitle": "Yo China",
+        "restaurantCity": "Noida",
+        "restaurantState": "Uttar Pradesh",
+        "starRating":5,
+        "imageUrl": "http://www.design-worldwide.com/images/clients/big/yochina6big.jpg",
+          "imageTitle":"hi"
+    }];
+
+  
+  ngOnInit() {
+  }
+
+  toggleImage():void{
+    this.showImage=!this.showImage;
+  }
+  searchResturants():void{
+    this.resturants= this.resturants.filter(function(val){
+            val.restaurantTitle==this.listFilter
+         })
+  }
+
+}
